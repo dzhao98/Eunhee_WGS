@@ -2,12 +2,25 @@
 https://gatk.broadinstitute.org/hc/en-us/articles/360035535912-Data-pre-processing-for-variant-discovery
 
 ##BWA Alignment 
+
+
 https://github.com/lh3/bwa 
-bwa mem -t 30 -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta /projects/verhaak-lab/Eunhee_WGS/HelaA2ccc_GT22-06359_CTAGCGCT-GTCTACAC_S60_L002_R1_001.fastq.gz /projects/verhaak-lab/Eunhee_WGS/HelaA2ccc_GT22-06359_CTAGCGCT-GTCTACAC_S60_L002_R2_001.fastq.gz > /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.sam 
+
+#!/bin/bash
+#SBATCH --job-name=HeLabwa  # Job name
+#SBATCH --ntasks=1          # Run on a single CPU
+#SBATCH --cpus-per-task=48      # Number of CPU cores per task
+#SBATCH --mem=100G           # Job memory request
+#SBATCH --time=48:00:00        # Time limit hrs:min:sec
+#SBATCH --mail-user=dacheng.zhao@jax.org	#email
+#SBATCH --mail-type=END,FAIL		# email when job is done or failed
+#SBATCH -o slurm.%x.%j.out # STDOUT
+#SBATCH -e slurm.%x.%j.err # STDERR
+bwa mem -t 40 -R "@RG\tID:HC5WVDSX3\tSM:HeLa\tLB:1\tPL:ILLUMINA" /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta /projects/verhaak-lab/Eunhee_WGS/HelaA2ccc_GT22-06359_CTAGCGCT-GTCTACAC_S60_L002_R1_001.fastq.gz /projects/verhaak-lab/Eunhee_WGS/HelaA2ccc_GT22-06359_CTAGCGCT-GTCTACAC_S60_L002_R2_001.fastq.gz > /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.sam 
 
 @A00739:583:HC5WVDSX3:2:1101:9561:1016 1:N:0:CTAGCGCT+GTCTACAC 
 
 
-bwa mem -t 30 -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta /projects/verhaak-lab/Eunhee_WGS/PC3nciCCCc1_GT22-06358_TCGATATC-ACTCGTGT_S61_L002_R1_001.fastq.gz /projects/verhaak-lab/Eunhee_WGS/PC3nciCCCc1_GT22-06358_TCGATATC-ACTCGTGT_S61_L002_R2_001.fastq.gz > /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.sam
+bwa mem -t 40 -R "@RG\tID:HC5WVDSX3\tSM:PC3\tLB:1\tPL:ILLUMINA" /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta /projects/verhaak-lab/Eunhee_WGS/PC3nciCCCc1_GT22-06358_TCGATATC-ACTCGTGT_S61_L002_R1_001.fastq.gz /projects/verhaak-lab/Eunhee_WGS/PC3nciCCCc1_GT22-06358_TCGATATC-ACTCGTGT_S61_L002_R2_001.fastq.gz > /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.sam
 
 @A00739:583:HC5WVDSX3:2:1101:9869:1016 1:N:0:TCGATATC+ACTCGTGT
