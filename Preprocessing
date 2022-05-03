@@ -35,5 +35,8 @@ bwa mem -t 40 -R "@RG\tID:HC5WVDSX3\tSM:PC3\tLB:1\tPL:ILLUMINA" /projects/verhaa
  ##Base Recalibrator
  gatk BaseRecalibrator -I /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bam -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --known-sites /projects/verhaak-lab/verhaak_ref/gatk-cnv/af-only-gnomad.raw.sites.b37.AFgt0.1.vcf.gz -O /projects/verhaak-lab/Eunhee_WGS/PC3/PC3_recal_data.table
  gatk BaseRecalibrator -I /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.marked_duplicates.bam  -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --known-sites /projects/verhaak-lab/verhaak_ref/gatk-cnv/af-only-gnomad.raw.sites.b37.AFgt0.1.vcf.gz -O /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa_recal_data.table
-
+ ##apply BQSR 
+ 
+ gatk ApplyBQSR -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta -I /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bam --bqsr-recal-file /projects/verhaak-lab/Eunhee_WGS/PC3/PC3_recal_data.table -O /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam
+ gatk ApplyBQSR -R /:wqprojects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta -I /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.marked_duplicates.bam --bqsr-recal-file /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa_recal_data.table -O /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.marked_duplicates.bqsr.bam
 
