@@ -39,4 +39,16 @@ bwa mem -t 40 -R "@RG\tID:HC5WVDSX3\tSM:PC3\tLB:1\tPL:ILLUMINA" /projects/verhaa
  
  gatk ApplyBQSR -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta -I /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bam --bqsr-recal-file /projects/verhaak-lab/Eunhee_WGS/PC3/PC3_recal_data.table -O /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam
  gatk ApplyBQSR -R /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta -I /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.marked_duplicates.bam --bqsr-recal-file /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa_recal_data.table -O /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.marked_duplicates.bqsr.bam
+## Running amplicon architect with nextflow
+https://github.com/TheJacksonLaboratory/nextflow-aa
+
+
+cd /projects/verhaak-lab/dzhao/aa/nextflow-aa/
+(default with CN=4 minimun 10k) running it on login mode please 
+
+sh bin/run_nf_aa.sh -a aa -n Eunhee_WGS -i /projects/verhaak-lab/Eunhee_WGS/Eunhee_WGS.csv -e dacheng.zhao@jax.org -s aa
+
+
+
+
 
