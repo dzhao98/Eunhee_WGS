@@ -48,6 +48,8 @@ cd /projects/verhaak-lab/dzhao/aa/nextflow-aa/
 
 sh bin/run_nf_aa.sh -a aa -n Eunhee_WGS -i /projects/verhaak-lab/Eunhee_WGS/Eunhee_WGS.csv -e dacheng.zhao@jax.org -s aa
 
+Summary results 
+/projects/verhaak-lab/GLASS-NF/results/results/aa/GLASS/cnvkit/filterBed_TRUE/minCN4/cnsizeMin10000/0X/aaver-JensVer1.2/summary/Eunhee_WGS
 
 
 
