@@ -1,6 +1,6 @@
 ##svaba Targeted local assembly at the breakpoints 
-k=8:127,891,376-128,891,576
-svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k /projects/verhaak-lab/Eunhee_WGS/HeLa/bp1.bed -a bp -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
+k=8:133,904,590-134,673,814
+svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k -a bp -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
 svaba run -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -r all -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
 
 svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k  -a bp -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
