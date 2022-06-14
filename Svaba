@@ -1,6 +1,18 @@
 ##svaba Targeted local assembly at the breakpoints 
-k=8:133,904,590-134,673,814
-svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k -a bp -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
+k=8:134,672,814-134,674,814
+
+bp1 k=8:134,672,814-134,674,814
+bp2 k=8:134,767,936-134,769,936
+bp3 k=8:139,348,852-139,349,052
+svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k -a bp2 -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --write-asqg
 svaba run -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -r all -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
 
 svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k  -a bp -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
+
+
+samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:134673814-134674814" > bp1.bam
+samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:134768836-134769036" > bp2.bam
+samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:139348852-139349052" > bp3.bam
+
+samtools sort bp1.bam -o bp1.sorted.bam 
+samtools fasta bp1.sorted.bam > bp1.fasta
