@@ -4,6 +4,8 @@ k=8:134,672,814-134,674,814
 bp1 k=8:134,672,814-134,674,814
 bp2 k=8:134,767,936-134,769,936
 bp3 k=8:139,348,852-139,349,052
+bp4 8:122374894
+bp5 124907619
 svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k -a bp2 -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --write-asqg
 svaba run -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -r all -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta
 
@@ -13,6 +15,37 @@ svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.ba
 samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:134673814-134674814" > bp1.bam
 samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:134768836-134769036" > bp2.bam
 samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:139348852-139349052" > bp3.bam
+samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:122373894-122375894" > bp4.bam
+samtools view -h /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam "8:124966919-124968919" > bp5.bam
 
-samtools sort bp1.bam -o bp1.sorted.bam 
-samtools fasta bp1.sorted.bam > bp1.fasta
+
+##downsampling
+samtools veiw -s 0.25 bp4.bam >bp4.ds.bam
+samtools view -h -s 0.25 bp5.bam > bp5.ds.bam
+
+samtools sort bp5.ds.bam -o bp5.sorted.bam 
+samtools fasta bp5.sorted.bam > bp5.fasta
+
+chr8 k=8:133,894,531-133,894,731
+##svaba reconstruct break points 
+svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k -a bp2 -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --write-asqg
+svaba run  -t /projects/verhaak-lab/Eunhee_WGS/PC3/PC3.marked_duplicates.bqsr.bam  -p 20 -k $k -a bp1 -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta --write-asqg
+
+##extracting bp sequence reads 
+gunzip -c bp2.alignments.txt.gz | grep c_8_120058480_120083480_75C > plot.txt
+c_8_120058480_120083480_75C
+8:133894631(-)-8:140216462(+)__8_133876480_133901480D
+
+bp3:
+c_8_122361480_122386480_2C
+gunzip -c bp2.alignments.txt.gz | grep c_8_122361480_122386480_2C > plot.txt
+
+bp4 
+c_8_137575980_137600980_81C
+gunzip -c bp2.alignments.txt.gz | grep c_8_137575980_137600980_81C > bp4.plot.txt
+ bp5 
+ c_8_122483980_122508980_32C
+gunzip -c bp2.alignments.txt.gz | grep c_8_122483980_122508980_32C > bp5.plot.txt
+bp6 
+c_8_122851480_122876480_63C
+gunzip -c bp2.alignments.txt.gz | grep c_8_122851480_122876480_63C > bp6.plot.txt
