@@ -49,3 +49,33 @@ gunzip -c bp2.alignments.txt.gz | grep c_8_122483980_122508980_32C > bp5.plot.tx
 bp6 
 c_8_122851480_122876480_63C
 gunzip -c bp2.alignments.txt.gz | grep c_8_122851480_122876480_63C > bp6.plot.txt
+
+
+
+HeLa 
+k=5:79,000,000-131,349,052|
+svaba run  -t /projects/verhaak-lab/Eunhee_WGS/HeLa/HeLa.marked_duplicates.bqsr.bam  -p 4 -k $k -a bp1 -G /projects/verhaak-lab/GLASS-NF/references/GRCh37/Homo_sapiens_assembly19.fasta 
+
+bp2 
+c_5_79520488_79545488_77C
+gunzip -c bp1.alignments.txt.gz | grep c_5_79520488_79545488_77C > bp2.plot.txt doesnt work out 
+c_5_80010488_80035488_200C
+
+gunzip -c bp1.alignments.txt.gz | grep c_5_80010488_80035488_200C> bp3.plot.txt 
+
+
+c_5_80059488_80084488_297C
+
+gunzip -c bp1.alignments.txt.gz | grep c_5_80059488_80084488_297C> bp4.plot.txt
+
+c_5_106391000_106416000_25C
+
+gunzip -c bp1.alignments.txt.gz | grep c_5_106391000_106416000_25C> bp5.plot.txt
+c_5_105999000_106024000_50C
+gunzip -c bp1.alignments.txt.gz | grep c_5_105999000_106024000_50C> bp6.plot.txt
+c_5_129935500_129960500_43C bp7
+gunzip -c bp1.alignments.txt.gz | grep c_5_129935500_129960500_43C> bp7.plot.txt
+c_5_129960000_129985000_8C
+gunzip -c bp1.alignments.txt.gz | grep c_5_129960000_129985000_8C> bp8.plot.txt
+
+
